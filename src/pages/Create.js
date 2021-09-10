@@ -1,10 +1,10 @@
-import { Button, ButtonGroup, Typography } from '@material-ui/core';
+import { Button, Container, Typography } from '@material-ui/core';
 import React from 'react';
 
 export default function Create() {
   return (
-    <div>
-      <Typography variant="h1" color="primary" align="center">
+    <Container>
+      {/* <Typography variant="h1" color="primary" align="center">
         Create a New Note
       </Typography>
       <hr />
@@ -13,7 +13,7 @@ export default function Create() {
         consequatur quaerat cupiditate debitis, voluptate distinctio iure enim placeat nulla nisi
         iusto earum incidunt quas illo! Reiciendis laborum debitis molestias?
       </Typography>
-      <hr />
+      <hr /> */}
       <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
         Create a New Note
       </Typography>
@@ -27,7 +27,7 @@ export default function Create() {
         Submit
       </Button>
 
-      <Button type="submit">Submit</Button>
+      {/* <Button type="submit">Submit</Button>
       <Button type="submit" color="primary" variant="contained" disableElevation>
         Submit
       </Button>
@@ -39,7 +39,7 @@ export default function Create() {
         <Button>One</Button>
         <Button>Two</Button>
         <Button>There</Button>
-      </ButtonGroup>
-    </div>
+      </ButtonGroup> */}
+    </Container>
   );
 }
