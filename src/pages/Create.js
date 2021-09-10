@@ -1,19 +1,10 @@
 import { Button, Container, Typography } from '@material-ui/core';
+import { AcUnitOutlined, KeyboardArrowRight, Send } from '@material-ui/icons';
 import React from 'react';
 
 export default function Create() {
   return (
     <Container>
-      {/* <Typography variant="h1" color="primary" align="center">
-        Create a New Note
-      </Typography>
-      <hr />
-      <Typography color="secondary" noWrap>
-        Create a New Note Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, quia,
-        consequatur quaerat cupiditate debitis, voluptate distinctio iure enim placeat nulla nisi
-        iusto earum incidunt quas illo! Reiciendis laborum debitis molestias?
-      </Typography>
-      <hr /> */}
       <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
         Create a New Note
       </Typography>
@@ -23,23 +14,19 @@ export default function Create() {
         type="submit"
         color="secondary"
         variant="contained"
+        startIcon={<Send />}
+        endIcon={<KeyboardArrowRight />}
       >
         Submit
       </Button>
 
-      {/* <Button type="submit">Submit</Button>
-      <Button type="submit" color="primary" variant="contained" disableElevation>
-        Submit
-      </Button>
-      <Button type="submit" color="secondary" variant="outlined">
-        Submit
-      </Button>
-
-      <ButtonGroup color="secondary" variant="contained">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>There</Button>
-      </ButtonGroup> */}
+      <br />
+      <AcUnitOutlined />
+      <AcUnitOutlined color="secondary" fontSize="large" />
+      <AcUnitOutlined color="secondary" fontSize="small" />
+      <AcUnitOutlined color="action" fontSize="small" />
+      <AcUnitOutlined color="error" fontSize="small" />
+      <AcUnitOutlined color="disabled" fontSize="small" />
     </Container>
   );
 }
