@@ -1,10 +1,10 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createTheme, ThemeProvider } from '@material-ui/core';
 import { purple } from '@material-ui/core/colors';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './pages/Create';
 import Notes from './pages/Notes';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: '#fefefe',
