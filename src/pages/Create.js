@@ -1,4 +1,12 @@
-import { Button, Container, makeStyles, TextField, Typography } from '@material-ui/core';
+/* eslint-disable prettier/prettier */
+import {
+  Button,
+  Container, FormControl, FormControlLabel, FormLabel, makeStyles,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography
+} from '@material-ui/core';
 import { KeyboardArrowRight } from '@material-ui/icons';
 import React, { useState } from 'react';
 
@@ -16,6 +24,7 @@ export default function Create() {
   const [details, setDetails] = useState('');
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const [category, setCategory] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,7 +38,7 @@ export default function Create() {
     }
 
     if (title && details) {
-      console.log(title, details);
+      console.log(title, details, category);
     }
   };
 
@@ -62,6 +71,16 @@ export default function Create() {
           required
           error={detailsError}
         />
+
+        <FormControl className={classes.field}>
+        <FormLabel>Note Category</FormLabel>
+          <RadioGroup value={category} onChange={(e) => setCategory(e.target.value)}>
+            <FormControlLabel value="money" control={<Radio/>} label="Money" />
+            <FormControlLabel value="todo" control={<Radio/>} label="Todo" />
+            <FormControlLabel value="reminder" control={<Radio/>} label="Reminder" />
+            <FormControlLabel value="work" control={<Radio/>} label="Work" />
+          </RadioGroup>
+        </FormControl>
 
         <Button
           type="submit"
