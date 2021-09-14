@@ -1,5 +1,6 @@
-import { Container, Grid, Paper } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import NoteCard from '../components/NoteCard';
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -9,26 +10,21 @@ const Notes = () => {
       .then((res) => res.json())
       .then((data) => setNotes(data));
   }, []);
+
+  const handleDelete = async (id) => {
+    await fetch(`http://localhost:8000/notes/${id}`, {
+      method: 'DELETE',
+    });
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+  };
+
   return (
-    <Container>
-      {/* <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>1</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>2</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>3</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>4</Paper>
-        </Grid>
-      </Grid> */}
+    <Container spacing={3}>
       <Grid container>
         {notes.map((note) => (
           <Grid item xs={12} md={6} lg={4} key={note.id}>
-            <Paper>{note.title}</Paper>
+            <NoteCard note={note} handleDelete={handleDelete} />
           </Grid>
         ))}
       </Grid>
