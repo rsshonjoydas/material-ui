@@ -14,10 +14,11 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme) => ({
   page: {
     background: '#f9f9f9',
     width: '100%',
+    padding: theme.spacing(3),
   },
   drawer: {
     width: drawerWidth,
@@ -31,7 +32,10 @@ const useStyle = makeStyles({
   active: {
     background: '#f4f4f4',
   },
-});
+  title: {
+    padding: theme.spacing(2),
+  },
+}));
 
 const Layout = ({ children }) => {
   const classes = useStyle();
@@ -61,7 +65,9 @@ const Layout = ({ children }) => {
         classes={{ paper: classes.drawerPaper }}
       >
         <div>
-          <Typography variant="h5">RS Note</Typography>
+          <Typography variant="h5" className={classes.title}>
+            RS Note
+          </Typography>
         </div>
 
         {/* //TODO: list links */}
