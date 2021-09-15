@@ -1,4 +1,4 @@
-import { Drawer, makeStyles, Typography } from '@material-ui/core';
+import { Drawer, List, ListItem, ListItemText, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 
 const drawerWidth = 240;
@@ -32,6 +32,21 @@ const Layout = ({ children }) => {
         <div>
           <Typography variant="h5">RS Note</Typography>
         </div>
+
+        <List>
+          <ListItem>
+            <ListItemText primary="hello" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="hello" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="hello" />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="hello" />
+          </ListItem>
+        </List>
       </Drawer>
       <div className={classes.page}>{children}</div>
     </div>
