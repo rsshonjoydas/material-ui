@@ -1,14 +1,17 @@
 import {
+  AppBar,
   Drawer,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   makeStyles,
+  Toolbar,
   // eslint-disable-next-line prettier/prettier
   Typography
 } from '@material-ui/core';
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons';
+import { format } from 'date-fns';
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -35,6 +38,13 @@ const useStyle = makeStyles((theme) => ({
   title: {
     padding: theme.spacing(2),
   },
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+  },
+  toolbar: theme.mixins.toolbar,
+  date: {
+    flexGrow: 1,
+  },
 }));
 
 const Layout = ({ children }) => {
@@ -57,6 +67,15 @@ const Layout = ({ children }) => {
 
   return (
     <div className={classes.root}>
+      {/* //TODO: app bar */}
+      <AppBar className={classes.appBar} elevation={0}>
+        <Toolbar>
+          <Typography className={classes.date}>
+            Today is the {format(new Date(), 'do MMMM Y')}
+          </Typography>
+          <Typography>Shonjoy</Typography>
+        </Toolbar>
+      </AppBar>
       {/* //TODO: side drawer */}
       <Drawer
         className={classes.drawer}
@@ -85,7 +104,10 @@ const Layout = ({ children }) => {
           ))}
         </List>
       </Drawer>
-      <div className={classes.page}>{children}</div>
+      <div className={classes.page}>
+        <div className={classes.toolbar} />
+        {children}
+      </div>
     </div>
   );
 };
