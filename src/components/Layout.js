@@ -1,5 +1,16 @@
-import { Drawer, List, ListItem, ListItemText, makeStyles, Typography } from '@material-ui/core';
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  makeStyles,
+  // eslint-disable-next-line prettier/prettier
+  Typography
+} from '@material-ui/core';
+import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons';
 import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -17,12 +28,32 @@ const useStyle = makeStyles({
   root: {
     display: 'flex',
   },
+  active: {
+    background: '#f4f4f4',
+  },
 });
 
 const Layout = ({ children }) => {
   const classes = useStyle();
+  const history = useHistory();
+  const location = useLocation();
+
+  const menuItems = [
+    {
+      text: 'My Notes',
+      icon: <SubjectOutlined color="secondary" />,
+      path: '/',
+    },
+    {
+      text: 'Create Note',
+      icon: <AddCircleOutlineOutlined color="secondary" />,
+      path: '/create',
+    },
+  ];
+
   return (
     <div className={classes.root}>
+      {/* //TODO: side drawer */}
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -33,19 +64,19 @@ const Layout = ({ children }) => {
           <Typography variant="h5">RS Note</Typography>
         </div>
 
+        {/* //TODO: list links */}
         <List>
-          <ListItem>
-            <ListItemText primary="hello" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="hello" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="hello" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="hello" />
-          </ListItem>
+          {menuItems.map((item) => (
+            <ListItem
+              button
+              key={item.text}
+              onClick={() => history.push(item.path)}
+              className={location.pathname === item.path ? classes.active : null}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
       <div className={classes.page}>{children}</div>

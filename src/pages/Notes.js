@@ -20,8 +20,8 @@ const Notes = () => {
   };
 
   return (
-    <Container spacing={3}>
-      <Grid container>
+    <Container>
+      <Grid container spacing={3}>
         {notes.map((note) => (
           <Grid item xs={12} md={6} lg={4} key={note.id}>
             <NoteCard note={note} handleDelete={handleDelete} />
