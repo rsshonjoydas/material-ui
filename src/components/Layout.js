@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Avatar,
   Drawer,
   List,
   ListItem,
@@ -45,6 +46,10 @@ const useStyle = makeStyles((theme) => ({
   date: {
     flexGrow: 1,
   },
+  avatar: {
+    padding: 2,
+    marginLeft: theme.spacing(2),
+  },
 }));
 
 const Layout = ({ children }) => {
@@ -74,6 +79,7 @@ const Layout = ({ children }) => {
             Today is the {format(new Date(), 'do MMMM Y')}
           </Typography>
           <Typography>Shonjoy</Typography>
+          <Avatar src="/profile.png" className={classes.avatar} />
         </Toolbar>
       </AppBar>
       {/* //TODO: side drawer */}

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Card,
   CardContent,
   CardHeader,
@@ -7,16 +8,23 @@ import {
   // eslint-disable-next-line prettier/prettier
   Typography
 } from '@material-ui/core';
+import { blue, green, pink, yellow } from '@material-ui/core/colors';
 import { DeleteOutline } from '@material-ui/icons';
 import React from 'react';
 
 const useStyles = makeStyles({
-  test: {
-    // eslint-disable-next-line consistent-return
-    border: (note) => {
+  avatar: {
+    backgroundColor: (note) => {
       if (note.category === 'work') {
-        return '1px solid red';
+        return yellow[700];
       }
+      if (note.category === 'money') {
+        return green[500];
+      }
+      if (note.category === 'todo') {
+        return pink[500];
+      }
+      return blue[500];
     },
   },
 });
@@ -24,8 +32,9 @@ const useStyles = makeStyles({
 const NoteCard = ({ note, handleDelete }) => {
   const classes = useStyles(note);
   return (
-    <Card elevation={3} className={classes.test}>
+    <Card elevation={3}>
       <CardHeader
+        avatar={<Avatar className={classes.avatar}>{note.category[0].toUpperCase()}</Avatar>}
         action={
           <IconButton onClick={() => handleDelete(note.id)}>
             <DeleteOutline />
